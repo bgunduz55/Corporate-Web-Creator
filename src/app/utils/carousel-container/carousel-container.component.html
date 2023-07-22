@@ -1,0 +1,19 @@
+<section class="testimonial-style-two" style="background-image: url(/assets/images/background/testimonial-bg2.jpg);">
+    <div class="container">
+        <div class="testimonial-carousel">
+            <owl-carousel-o [options]="getHeaderOptionsByNav(true)">
+                <ng-template *ngFor="let item of pageData.components" carouselSlide>
+                    <div class="testimonial-content">
+                        <div class="icon-box"><i class="flaticon-left-quote"></i></div>
+                        <div class="text">{{language === 'en' ? item.text_EN : item.text_TR}}</div>
+                        <div class="author">
+                            <figure class="author-thumb"><img src="{{restUrl}}{{item.image.url}}" alt=""></figure>
+                            <div class="name">{{item.name}}</div>
+                            <div class="title">{{language === 'en' ? item.description_EN : item.description_TR}}</div>
+                        </div>
+                    </div>
+                </ng-template>
+            </owl-carousel-o>
+        </div>
+    </div>
+</section>

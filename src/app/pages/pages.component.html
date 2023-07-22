@@ -1,0 +1,12 @@
+<div *ngIf="{ page: page$ | async,
+    language: language$ | async,
+    headerFooter: headerFooter$ |async
+} as data">
+    <app-header [header]="data.headerFooter.header" [page]="data.page"></app-header>
+
+
+    <app-page-body [page]="data.page"></app-page-body>
+
+
+    <app-footer [header]="data.headerFooter.footer" [language]="data.language"></app-footer>
+</div>

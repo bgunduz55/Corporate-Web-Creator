@@ -1,0 +1,13 @@
+<div *ngFor="let item of pageData.components" class="row align-items-stretch">
+
+    <div class="col-md-5 col-padding min-vh-75" style="background: url('{{restUrl}}{{item.image.url}}') center center no-repeat; background-size: cover;"></div>
+
+    <div class="col-md-7 col-padding">
+        <div [innerHTML]="language === 'en' ? item.rich_text_EN : item.rich_text_TR">
+
+
+
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,33 @@
+<div *ngIf="{ language: language$ | async } as data, pageData">
+
+    <app-card-with-image-container [pageData]="pageData" [language]="data.language"
+        *ngIf="pageData.__component === 'repeatable-views.card-with-image-container'"></app-card-with-image-container>
+
+    <app-carousel-container [pageData]="pageData" [language]="data.language"
+        *ngIf="pageData.__component === 'repeatable-views.carousel-container'"></app-carousel-container>
+
+    <app-info-block-with-image [pageData]="pageData" [language]="data.language"
+        *ngIf="pageData.__component === 'repeatable-views.ibwi-container'"></app-info-block-with-image>
+
+    <app-card-with-icon-top [pageData]="pageData" [language]="data.language"
+        *ngIf="pageData.__component === 'repeatable-views.cwi-con-top-container'"></app-card-with-icon-top>
+
+    <app-product-table [pageData]="pageData" [language]="data.language"
+        *ngIf="pageData.__component === 'view-types.product-table'"></app-product-table>
+
+    <app-generic-input [pageData]="pageData" [language]="data.language"
+        *ngIf="pageData.__component === 'view-types.generic-input'"></app-generic-input>
+
+    <app-tabbed-block [pageData]="pageData" [language]="data.language"
+        *ngIf="pageData.__component === 'repeatable-views.tabbed-block-container'"></app-tabbed-block>
+
+    <app-istun-block [pageData]="pageData" [language]="data.language"
+        *ngIf="pageData.__component === 'view-types.istun-block'"></app-istun-block>
+
+    <app-left-video-block [pageData]="pageData" [language]="data.language"
+        *ngIf="pageData.__component === 'view-types.left-video-block'"></app-left-video-block>
+
+    <app-card-with-image-container2 [pageData]="pageData" [language]="data.language"
+        *ngIf="pageData.__component === 'repeatable-views.cwi-container-2'"></app-card-with-image-container2>
+
+</div>

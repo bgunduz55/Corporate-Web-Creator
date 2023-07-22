@@ -1,0 +1,17 @@
+<section class="feature-section feature-style-three centred">
+    <div class="shape-1 wow zoomIn animated animated" style="visibility: visible; animation-name: zoomIn;"></div>
+    <div class="shape-2 wow zoomIn animated animated" style="visibility: visible; animation-name: zoomIn;"></div>
+    <div class="container">
+        <div class="feature-content">
+            <div class="row">
+                <div *ngFor="let item of pageData.components" class="col-lg-4 col-md-6 col-sm-12 feature-column">
+                    <div class="single-item hvr-float-shadow">
+                        <div class="icon-box"><i class="flaticon-{{item.icon}}"></i></div>
+                        <h4><a href="#">{{language === 'en' ? item.title_EN : item.title_TR}}</a></h4>
+                        <div class="text">{{language === 'en' ? item.text_EN : item.text_TR}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

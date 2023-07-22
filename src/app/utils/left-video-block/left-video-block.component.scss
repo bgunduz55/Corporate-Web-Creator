@@ -1,0 +1,18 @@
+iframe {
+    max-width: 500px;
+    min-width: 350px;
+}
+
+@media (max-width: 500px) {
+    iframe {
+        max-width: 500px;
+        min-width: 350px;
+    }
+}
+
+@media (min-width: 500px) {
+    iframe {
+        max-width: 500px;
+        min-width: 500px;
+    }
+}

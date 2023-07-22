@@ -1,0 +1,28 @@
+<section class="service-section style-two">
+    <div class="container">
+        <div class="row">
+            <div *ngFor="let item of pageData.components" class="col-lg-3 col-md-6 col-sm-12 service-column">
+                <div class="single-service-content inner-box">
+                    <figure class="image-box">
+                        <img src="{{restUrl}}{{item?.image?.url}}" alt="">
+                        <div class="overlay">
+                            <div class="wrapper">
+                                <a href="{{item.route_url}}"><i class="fa fa-link"></i></a>
+                            </div>
+                        </div>
+                    </figure>
+                    <div class="lower-content" style="height:  283px">
+                        <h5><a href="{{item.route_url}}">{{language === 'en' ? item.title_EN : item.title_TR}}</a></h5>
+                        <div class="text">
+                            <p>{{language === 'en' ? item.text_EN : item.text_TR}}</p>
+
+                        </div>
+                        <div class="link"><a href="{{item.route_url}}" class="theme-btn-two"
+                                style=" position: absolute;bottom: 32px; left: 22px;">{{language === 'en' ? 'Read More...' : 'Daha Fazla...'}}</a></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

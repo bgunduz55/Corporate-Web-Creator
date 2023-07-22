@@ -1,0 +1,205 @@
+<section *ngIf="!showAlert" class="our-event event-page">
+    <div *ngIf="{
+        groupList : groups$ | async,
+        activeSubstanceList : activeSubstances$ | async
+    } as data" class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel  ">
+                    <div class="panel  ">
+                        <div class="panel-heading">
+                            <h2 id="product"><b>{{language === 'en' ? 'Our Products' : 'Ürünlerimiz'}}</b></h2>
+                        </div>
+                        <div class="panel-body" style="border-color: red">
+                            <div class="datatable-scroll-wrap">
+                                <form [formGroup]="form">
+                                    <div class="form-row">
+                                        <div class="col-lg-3 col-md-6 col-sm-12 footer-column"
+                                            style="padding-bottom:10px">
+                                            <select class="form-control select2" formControlName="group"
+                                                name="urun_grup" (change)="filterItems()">
+                                                <option [ngValue]="null">{{language === 'en' ? 'Select a Group' : 'Grup seçiniz'}}</option>
+                                                <option *ngFor="let item of data.groupList" [ngValue]="item.id">
+                                                    {{item.name}}</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                                            <select class="form-control select2" formControlName="active_substance"
+                                                name="etken_madde" (change)="filterItems()">
+                                                <option [ngValue]="null">{{language === 'en' ? 'Select Active Substance' : 'Etken Madde Seçiniz'}}</option>
+                                                <option *ngFor="let item of data.activeSubstanceList"
+                                                    [ngValue]="item.id">{{item.name}}</option>
+                                            </select>
+                                        </div>
+                                        <nav class="col-lg-3 col-md-6 col-sm-12 footer-column ">
+                                            <input class="form-control mr-sm-2" formControlName="textFilter"
+                                                name="urun_adi" type="search" (input)="filterItems()"
+                                                placeholder="{{language === 'en' ? 'Choose Product' : 'Ürün seçiniz'}}" aria-label="Search">
+                                        </nav>
+                                    </div>
+                                </form>
+                                <div id="urunListTable_wrapper" class="dataTables_wrapper no-footer">
+                                    <div class="top">
+                                        <div class="dataTables_length" id="urunListTable_length"><label>{{language === 'en' ? 'Show' : ''}}<select
+                                                    name="urunListTable_length" aria-controls="urunListTable" (change)="filterItems()"
+                                                    [(ngModel)]="pageElementCount" class="">
+                                                    <option [ngValue]="5">5</option>
+                                                    <option [ngValue]="10">10</option>
+                                                    <option [ngValue]="25">25</option>
+                                                    <option [ngValue]="50">50</option>
+                                                    <option [ngValue]="-1">All</option>
+                                                </select> {{language === 'en' ? 'product' : 'ürün göster'}}</label></div>
+                                    </div>
+                                    <div
+                                        class="dataTables_paginate fg-buttonset ui-buttonset fg-buttonset-multi ui-buttonset-multi paging_simple_numbers">
+                                        <jw-pagination [items]="products" [pageSize]="pageElementCount" [language]="language"
+                                            (changePage)="onChangePage($event)"></jw-pagination>
+                                    </div>
+                                    <div id="urunListTable_processing" class="dataTables_processing"
+                                        style="display: none;">Processing...</div>
+                                    <table class="table table-striped- table-bordered  dataTable no-footer"
+                                        id="urunListTable" style="font-family: 'Hind', sans-serif;" role="grid"
+                                        aria-describedby="urunListTable_info">
+                                        <thead>
+                                            <tr role="row">
+                                                <th style="text-align: center"
+                                                    class="sorting ui-state-default sorting_asc" tabindex="0"
+                                                    aria-controls="urunListTable" rowspan="1" colspan="1"
+                                                    aria-sort="ascending"
+                                                    aria-label="Products: activate to sort column descending">
+                                                    <div class="DataTables_sort_wrapper">{{language === 'en' ? 'Products' : 'Ürünler'}}<span
+                                                            class="DataTables_sort_icon css_right ui-icon ui-icon-triangle-1-n"></span>
+                                                    </div>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let item of pageOfItems" role="row" class="odd">
+                                                <td class="sorting_1">
+                                                    <div class="row" style="border-color: #0a001f!important;">
+
+                                                        <div class="col-md-5">
+                                                            <div class="single-news-content">
+                                                                <img width="350px" class=" image-box"
+                                                                    src="{{restUrl}}{{item.image.url}}" alt="">
+
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="col-md-7">
+                                                            <table style="">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th colspan="3"
+                                                                            style=" border: hidden !important;">
+                                                                            <div
+                                                                                style="text-align: left!important; font-size: 15pt ">
+                                                                                {{item.title}}
+                                                                                <hr
+                                                                                    style="margin-top: 3px; margin-bottom: 5px; border: 1px; border-top: 1px solid #b0b0b0;">
+                                                                            </div>
+                                                                        </th>
+                                                                    </tr>
+                                                                </thead>
+
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <th style="text-align:left;" class="UrunCon">
+                                                                            <b>Ürün Grubu</b></th>
+                                                                        <td class="UrunCon">:</td>
+                                                                        <td class="UrunCon">
+                                                                            {{ getGroupName(data.groupList, item.group)}}
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th style="text-align:left;" class="UrunCon">
+                                                                            <b>Etken Madde</b></th>
+                                                                        <td class="UrunCon">:</td>
+                                                                        <td class="UrunCon">
+                                                                            {{ getActiveSubstanceName(data.activeSubstanceList ,item.active_substances) }}
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th style="text-align:left;" class="UrunCon">
+                                                                            <b>Ticari Şekil</b>
+                                                                        </th>
+                                                                        <td class="UrunCon">:</td>
+                                                                        <td class="UrunCon">{{item.commercial_form}}
+                                                                        </td>
+                                                                    </tr>
+
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="bottom">
+                                        
+                                        <div class="dataTables_length" id="urunListTable_length"><label>{{language === 'en' ? 'Show' : ''}}<select
+                                            name="urunListTable_length" aria-controls="urunListTable" (change)="filterItems()"
+                                            [(ngModel)]="pageElementCount" class="">
+                                            <option [ngValue]="5">5</option>
+                                            <option [ngValue]="10">10</option>
+                                            <option [ngValue]="25">25</option>
+                                            <option [ngValue]="50">50</option>
+                                            <option [ngValue]="-1">All</option>
+                                        </select> {{language === 'en' ? 'product' : 'ürün göster'}}</label></div>
+                                        <div
+                                            class="dataTables_paginate fg-buttonset ui-buttonset fg-buttonset-multi ui-buttonset-multi paging_simple_numbers">
+                                            <jw-pagination [items]="products" [pageSize]="pageElementCount" [language]="language"
+                                                (changePage)="onChangePage($event)"></jw-pagination>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section *ngIf="showAlert" class="our-event event-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-6 col-sm-12 service-column" style="text-align: center!important;">
+                <div class="single-service-content " id="uyari-cerc">
+                    <div class="lower-content">
+                        <div style="text-align: center">
+                            <img src="/assets/images/icons/alert-icon.png" style="height: 100px; width: 100px">
+                        </div>
+
+                        <div class="text">
+                            <h4 class="textInfo">
+                                <div style="text-align: center">{{language === 'en' ? 'Alert!' : 'Uyarı!' }}</div>
+                                {{language === 'en' ? ('The information in this section of our site is informational only suitable for health care professionals.'+
+                                'If you are a Health Care Professional, below the “continue” key you can reach the page by pressing.'+
+                                'If you are not a health worker please “Cancel” to proceed to the homepage by pressing the key.') : 
+                                ('Sitemizin bu bölümündeki bilgiler sadece sağlık uzmanları için bilgilendirme amaçlıdır.'+
+                                'Sağlık Uzmanıysanız, “devam” tuşunun altında tuşuna basarak sayfaya ulaşabilirsiniz.'+
+                                'Sağlık çalışanı değilseniz, tuşuna basarak ana sayfaya ilerlemek için lütfen “İptal” tuşuna basın.')}}
+                            </h4>
+                        </div>
+                        <div>
+                            <a href="/Urunler">
+                                <button type="button" class="btn btn-3d btn-danger btn-lg" (click)="showAlert = false">{{language === 'en' ? 'Continue' : 'Devam' }}
+                                </button>
+                            </a> &nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href="/">
+                                <button type="button" class="btn btn-3d btn-default btn-lg" (click)="goBack()">{{language === 'en' ? 'Cancel' : 'İptal' }}
+                                </button>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

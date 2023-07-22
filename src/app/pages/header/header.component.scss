@@ -1,0 +1,55 @@
+.main-menu .navbar-collapse > ul li.current.dropdown .dropdown-btn, .main-menu .navbar-collapse > ul li.dropdown:hover .dropdown-btn {
+    color: #ff0000;
+}
+.header-bottom .logo-box {
+    margin-top: 11px;
+}
+a {
+    outline: none;
+    text-decoration: none;
+}
+
+.header-bottom .main-menu .navigation > li.current > a, .header-bottom .main-menu .navigation > li:hover > a {
+    background: #ff0000;
+    color: #ffffff;
+}
+
+.header-bottom .main-menu .navigation > li > a {
+    color: #222222;
+}
+.header-bottom .main-menu .navigation > li > a {
+    padding: 14px 30px 16px 30px;
+}
+
+.main-menu .navigation > li.dropdown > ul {
+    visibility: hidden;
+  opacity: 0;
+  display: block;
+    transition: visibility 0s, opacity 0.3s linear;
+}
+
+.main-menu .navigation > li.dropdown:hover > ul {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    
+}
+
+.languages.float-right {
+    margin-left: 20px;
+    position: absolute;
+    right: 25px;
+    top: 20px;
+}
+
+img.flag {
+    max-width: 50px;
+    margin-right: 5px;
+    margin-top: 11px;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.selected-img {
+    background-color: lightgray;
+}

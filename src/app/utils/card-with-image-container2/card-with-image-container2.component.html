@@ -1,0 +1,40 @@
+<!-- news-style-two -->
+<section class="news-style-two">
+    <div class="container">
+        <div class="title-box centred">
+            <div class="sec-title">{{language === 'en' ? pageData.title_EN : pageData.title_TR}}</div>
+            <div class="top-text">{{language === 'en' ? pageData.subtitle_EN : pageData.subtitle_TR}}</div>
+        </div>
+        <div class="row">
+            <!--Start single blog post-->
+            <div *ngFor="let item of pageData.components" class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+                <div class="single-blog-post">
+                    <div class="img-holder">
+                        <img src="{{restUrl}}{{item?.image?.url}}" alt="Awesome Image">
+                        <div class="categorie-button">
+                            <a class="btn-one" href="#">{{language === 'en' ? item.category_EN : item.category_TR}}</a>
+                        </div>
+                    </div>
+                    <div class="text-holder">
+                        <div class="meta-box">
+                            <ul class="meta-info">
+                                <!--<li><a href="#">Corporate</a></li>
+                                <li><a href="#">Jan 08, 2019</a></li>-->
+                            </ul>
+                        </div>
+                        <h3 class="blog-title"><a href="{{item.route_url}}">{{language === 'en' ? item.title_EN : item.title_TR}}</a>
+                        </h3>
+                        <div class="text-box">
+                            <p>{{language === 'en' ? item.text_EN : item.text_TR}}</p>
+                        </div>
+                        <div class="readmore-button">
+                            <a class="btn-two" href="{{item.route_url}}">{{language === 'en' ? 'Continue Reading' : 'Okumaya devam et'}}<span class="flaticon-next"></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End single blog post-->
+        </div>
+    </div>
+</section>
+<!-- news-style-two end -->

@@ -1,0 +1,16 @@
+<!-- cta-section -->
+<section class="cta-style-two" style="background-image: url(/assets/images/background/cta-bg2.jpg);">
+    <div class="container">
+        <div class="content-box centred">
+            <div class="cta-title">{{language === 'en' ? pageData.title_EN : pageData.title_TR}}</div>
+            <div class="link"><a href="#" class="theme-btn">{{language === 'en' ? pageData.button_text_EN : pageData.button_text_TR}}</a></div>
+        </div>
+        <div class="lower-cta-content">
+            <div class="title">{{language === 'en' ? pageData.subtitle_EN : pageData.subtitle_TR}}</div>
+            <div class="list-content clearfix" [innerHTML]="(language === 'en' ? pageData.rich_text_EN : pageData.rich_text_TR) | sanitizeHtml">
+                
+            </div>
+        </div>
+    </div>
+</section>
+<!-- cta-section end -->

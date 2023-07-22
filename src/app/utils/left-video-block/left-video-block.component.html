@@ -1,0 +1,23 @@
+<!-- about-style-eight -->
+<section class="about-style-eight about-style-four">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 col-sm-12 video-column">
+                <iframe height="315" [src]="(pageData.video_url | sanitizeUrl)" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 content-column">
+                <div class="about-content">
+                    <div class="title-box">
+                        <div class="sec-title">{{language === 'en' ? pageData.title_EN : pageData.title_TR}}<br /> </div>
+                        <div class="title-text">{{language === 'en' ? pageData.subtitle_EN : pageData.subtitle_TR}}</div>
+                    </div>
+                    <div class="text" [innerHTML]="(language === 'en' ? pageData.rich_text_EN : pageData.rich_text_TR) | sanitizeHtml">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- about-style-eight -->

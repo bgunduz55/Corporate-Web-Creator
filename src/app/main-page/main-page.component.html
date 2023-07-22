@@ -1,0 +1,155 @@
+<!-- .preloader -->
+<div class="preloader"></div>
+<!-- /.preloader -->
+<div *ngIf="{indexPage: indexPage$ | async,
+    language: language$ | async,
+    headerFooter: headerFooter$ | async} as data" class="full-page-container">
+    <!--
+    <div class="languages float-right">
+        <img class="flag" [ngClass]="{'selected-img': data.language === 'tr'}" src="assets/images/icons/tr.png" alt=""
+            (click)="changeSelectedLanguage('tr')">
+        <img class="flag" [ngClass]="{'selected-img': data.language === 'en'}" src="assets/images/icons/en.png" alt=""
+            (click)="changeSelectedLanguage('en')">
+    </div>
+-->
+    <div class="languages float-right">
+        <div class="nav-link" style="font-size: 15px;">
+            <a href="/contact" class="" style="color: white; font-size: 17px; margin-right: 30px; cursor: pointer;">İletişim</a>&nbsp; &nbsp; &nbsp;
+            <a class="" style="color: white;font-size: 17px;margin-right: 15px; cursor: pointer;" (click)="changeSelectedLanguage(data.language ==='en' ? 'tr' : 'en')">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-globe" fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M1.018 7.5h2.49c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 0 0-.656 2.5zM2.255 4H4.09a9.266 9.266 0 0 1 .64-1.539 6.7 6.7 0 0 1 .597-.933A7.024 7.024 0 0 0 2.255 4zM8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm-.5 1.077c-.67.204-1.335.82-1.887 1.855-.173.324-.33.682-.468 1.068H7.5V1.077zM7.5 5H4.847a12.5 12.5 0 0 0-.338 2.5H7.5V5zm1 2.5V5h2.653c.187.765.306 1.608.338 2.5H8.5zm-1 1H4.51a12.5 12.5 0 0 0 .337 2.5H7.5V8.5zm1 2.5V8.5h2.99a12.495 12.495 0 0 1-.337 2.5H8.5zm-1 1H5.145c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12zm-2.173 2.472a6.695 6.695 0 0 1-.597-.933A9.267 9.267 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472zM1.674 11H3.82a13.651 13.651 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5zm8.999 3.472A7.024 7.024 0 0 0 13.745 12h-1.834a9.278 9.278 0 0 1-.641 1.539 6.688 6.688 0 0 1-.597.933zM10.855 12H8.5v2.923c.67-.204 1.335-.82 1.887-1.855A7.98 7.98 0 0 0 10.855 12zm1.325-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm.312-3.5h2.49a6.959 6.959 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5zM11.91 4a9.277 9.277 0 0 0-.64-1.539 6.692 6.692 0 0 0-.597-.933A7.024 7.024 0 0 1 13.745 4h-1.834zm-1.055 0H8.5V1.077c.67.204 1.335.82 1.887 1.855.173.324.33.682.468 1.068z">
+                    </path>
+                </svg> {{(data.language ==='en' ? 'tr' : 'en') | titlecase}}</a>
+
+
+        </div>
+    </div>
+    <!-- Main Header -->
+    <header class="main-header header-style-three">
+
+        <!-- header-bottom -->
+        <div class="header-bottom">
+            <div class="container-fluid">
+                <div class="nav-outer">
+                    <div class="logo-box">
+                        <figure class="logo-outer"><a href="index.html"><img src="/assets/images/logo-3.png" alt=""></a>
+                        </figure>
+                    </div>
+                    <div class="menu-area">
+                        <nav class="main-menu navbar-expand-lg">
+                            <div class="navbar-header">
+                                <!-- Toggle Button -->
+                                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                    data-target=".navbar-collapse">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+                            <div class="navbar-collapse collapse clearfix"
+                                [innerHTML]="(data.language === 'en' ? data.headerFooter?.header?.rich_text_EN : data.headerFooter?.header?.rich_text_TR) | sanitizeHtml">
+
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="nav-link"></div>
+                </div>
+            </div>
+        </div><!-- header-bottom end -->
+    </header>
+    <!-- End Main Header -->
+
+    <app-slider-hexagon-header [indexPage]="data.indexPage" [language]="data.language">
+    </app-slider-hexagon-header>
+    <!-- main-slider -->
+    <section class="main-slider slider-style-two slider-style-five">
+        <owl-carousel-o [options]="getHeaderOptionsByNav(true)">
+            <ng-template carouselSlide>
+                <div class="slide" style="background-image:url(/assets/images/main-slider/11.jpg)">
+                    <div class="bg-column"></div>
+                    <div class="grid-container">
+                        
+                    </div>
+                </div>
+            </ng-template>
+            <ng-template carouselSlide>
+                <div class="slide" style="background-image:url(/assets/images/main-slider/12.jpg)">
+                    <div class="bg-column"></div>
+                    <div class="grid-container">
+                        
+                    </div>
+                    <!--<div class="grid-container">
+          <div class="container">
+              <div class="content-box">
+                  <h1>Reliable & High<br />Quality Laboratory</h1>
+                  <div class="text">Excepteur sint occaecat cupidatat non proident, sunt in culpa<br />qui officia deserunt mollit anim id est laborum. sed ut per<br />spiciatis unde omnis natus error.</div>
+                  <div class="slider-btn">
+                      <a href="#" class="theme-btn theme-btn-three">Contact Us</a>
+                  </div>
+              </div>
+          </div>
+        </div>-->
+                </div>
+            </ng-template>
+        </owl-carousel-o>
+
+    </section>
+    <!-- main-slider end -->
+
+    <div *ngIf="data.indexPage" class="">
+        <app-page-rows [pageData]="item" *ngFor="let item of data.indexPage.contents"></app-page-rows>
+    </div>
+
+    <section class="subscribe-section">
+        <div class="container">
+            <div class="outer-box">
+                <div class="row">
+                    <div class="title-column col-lg-6">
+                        <h2>{{data.language === 'en' ? 'Subscribe to Our Newsletter' : 'Bültenimize Abone Olun'}}</h2>
+                    </div>
+                    <div class="subscribe-form col-lg-6">
+                        <form method="post" action="/AboneOl" id="aboneol">
+                            <input type="hidden" name="_token" value="NJbt1leQSVxPSvAgGc8hJEhCxrrbuH1YxG1oGBBb">
+                            <div class="form-group">
+                                <input type="email" name="abone_mail" value="" placeholder="Your email..." required="">
+                                <button type="submit" class="theme-btn btn-style-six" id="oboneBotton">Subscribe
+                                    Now</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- main-footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="widgets-section">
+                <div class="row"
+                    [innerHTML]="(data.language === 'en' ? data.indexPage?.footer?.rich_text_EN : data.indexPage?.footer?.rich_text_TR) | sanitizeHtml">
+
+
+
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- main-footer end -->
+
+    <!-- footer-bottom -->
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="copyright"><a href="#">Corporate</a> &copy; 2020 All Right Reserved</div>
+        </div>
+    </div>
+    <!-- footer-bottom end -->
+</div>
+
+
+<!--Scroll to top-->
+<button class="scroll-top scroll-to-target" data-target="html" (click)="scrollToTop()">
+    <span class="fa fa-angle-up"></span>
+</button>
